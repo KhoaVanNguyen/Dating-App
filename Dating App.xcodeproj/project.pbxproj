@@ -16,6 +16,9 @@
 		D20759A01F6DAD9600942C16 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207599F1F6DAD9600942C16 /* AdCell.swift */; };
 		D20759A21F6DAEC300942C16 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759A11F6DAEC300942C16 /* File.swift */; };
 		D20759A41F6DAECF00942C16 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759A31F6DAECF00942C16 /* Ad.swift */; };
+		D20759A61F6DD38900942C16 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759A51F6DD38900942C16 /* MatchVC.swift */; };
+		D20759A81F6DD3EA00942C16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759A71F6DD3EA00942C16 /* User.swift */; };
+		D20759AA1F6DD4E800942C16 /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759A91F6DD4E800942C16 /* MatchCell.swift */; };
 		D288D08B1F6CD1A900670DEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D08A1F6CD1A900670DEC /* AppDelegate.swift */; };
 		D288D08D1F6CD1A900670DEC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D08C1F6CD1A900670DEC /* LoginVC.swift */; };
 		D288D0901F6CD1A900670DEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D288D08E1F6CD1A900670DEC /* Main.storyboard */; };
@@ -48,6 +51,9 @@
 		D207599F1F6DAD9600942C16 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
 		D20759A11F6DAEC300942C16 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D20759A31F6DAECF00942C16 /* Ad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
+		D20759A51F6DD38900942C16 /* MatchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
+		D20759A71F6DD3EA00942C16 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D20759A91F6DD4E800942C16 /* MatchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
 		D288D0871F6CD1A900670DEC /* Dating App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dating App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D288D08A1F6CD1A900670DEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D288D08C1F6CD1A900670DEC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				D288D09F1F6CD25E00670DEC /* CustomView */,
 				D288D0BE1F6CF66A00670DEC /* HashTagCell.swift */,
 				D207599F1F6DAD9600942C16 /* AdCell.swift */,
+				D20759A91F6DD4E800942C16 /* MatchCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 				D20759951F6D2D9800942C16 /* ChatVC.swift */,
 				D20759971F6D2DA300942C16 /* ChatDetailVC.swift */,
 				D207599D1F6DACAE00942C16 /* AdsVC.swift */,
+				D20759A51F6DD38900942C16 /* MatchVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -165,6 +173,7 @@
 				D207599B1F6D4D4600942C16 /* Message.swift */,
 				D20759A11F6DAEC300942C16 /* File.swift */,
 				D20759A31F6DAECF00942C16 /* Ad.swift */,
+				D20759A71F6DD3EA00942C16 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -334,15 +343,18 @@
 				D288D0B91F6CE2F600670DEC /* HashTag.swift in Sources */,
 				D288D08B1F6CD1A900670DEC /* AppDelegate.swift in Sources */,
 				D288D0A51F6CD27D00670DEC /* FancyBtn.swift in Sources */,
+				D20759A61F6DD38900942C16 /* MatchVC.swift in Sources */,
 				D288D0BD1F6CF25500670DEC /* HelperFunctions.swift in Sources */,
 				D20759981F6D2DA300942C16 /* ChatDetailVC.swift in Sources */,
 				D20759A41F6DAECF00942C16 /* Ad.swift in Sources */,
 				D20759961F6D2D9800942C16 /* ChatVC.swift in Sources */,
+				D20759AA1F6DD4E800942C16 /* MatchCell.swift in Sources */,
 				D207599A1F6D478E00942C16 /* Conversation.swift in Sources */,
 				D288D0BB1F6CE51200670DEC /* HashTagVC.swift in Sources */,
 				D288D0A41F6CD27D00670DEC /* CircleImage.swift in Sources */,
 				D20759A21F6DAEC300942C16 /* File.swift in Sources */,
 				D288D0AE1F6CD44700670DEC /* AuthService.swift in Sources */,
+				D20759A81F6DD3EA00942C16 /* User.swift in Sources */,
 				D288D0B71F6CDF2F00670DEC /* Constant.swift in Sources */,
 				D207599E1F6DACAE00942C16 /* AdsVC.swift in Sources */,
 				D288D0B01F6CD62700670DEC /* GradientView.swift in Sources */,

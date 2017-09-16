@@ -18,24 +18,20 @@ class ChatVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        DataService.instance.loadAllConversation { (conversations) in
-            self.conversations = conversations
-            self.tableView.reloadData()
+        
+        DispatchQueue.main.async {
+            DataService.instance.loadAllConversation { (conversation) in
+                self.conversations.append(conversation)
+                
+                self.tableView.reloadData()
+            }
         }
+        
+        
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ChatVCToChatDetailVC" {
-//            if let detailVC = segue.destination as? ChatDetailVC {
-//                if let conver = sender as? Conversation {
-//                    print("HERE")
-//                    print(conver)
-//                    detailVC.conversation = conver
-//                }
-//            }
-//            
-//        }
         let nav = segue.destination as? UINavigationController
         
         let chatdetailVC = nav?.viewControllers.first as! ChatDetailVC

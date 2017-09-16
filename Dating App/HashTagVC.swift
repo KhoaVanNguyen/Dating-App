@@ -119,6 +119,11 @@ class HashTagVC: UIViewController, UITextFieldDelegate {
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        self.view.endEditing(true)
 //    }
+    
+    @IBAction func finMatch_TouchUpInside(_ sender: Any) {
+    }
+    
+    
     func showAlert(title: String, message : String){
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

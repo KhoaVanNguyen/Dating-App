@@ -86,7 +86,7 @@ class DataService {
         })
     }
     
-    func addNewConversation(recipientId: String, recipientName: String, message:String, completion: @escaping (String) -> Void ){
+    func addNewConversation(recipientId: String, completion: @escaping (String) -> Void ){
         
         let dict = [
            "sender": AuthService.instance.currentUid(),
@@ -100,23 +100,26 @@ class DataService {
     }
     
     
-    func loadAllConversation(completion: @escaping ([Conversation]) -> Void  ){
-        REF_CONVERSATIONS.observeSingleEvent(of: .childAdded, with: { (snapshotData) in
+    func loadAllConversation(completion: @escaping (Conversation) -> Void  ){
+        
+    
+         REF_CONVERSATIONS.observe(.childAdded, with: { (snapshotData) in
             print(snapshotData)
             
-            var conversations = [Conversation]()
+            
             if let snapshot = snapshotData.value as? [String:Any] {
             
                 
                 let conversation = Conversation(id: snapshotData.key, data: snapshot)
                 
                 if conversation.sender == AuthService.instance.currentUid() || conversation.recipient == AuthService.instance.currentUid() {
-                    conversations.append(conversation)
+                    completion(conversation)
+                    return
                 }
                 
             }
             
-            completion(conversations)
+            
             
         })
         
