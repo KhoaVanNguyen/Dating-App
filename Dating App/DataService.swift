@@ -112,14 +112,16 @@ class DataService {
     }
     
     
-    func addMessage(toConversation id: String, text: String,senderName: String,senderId: String, recipientName: String, recipientId: String, completion: @escaping (Bool) -> Void ){
+    func addMessage(toConversation id: String, type: String, text: String,senderName: String,senderId: String, recipientName: String, recipientId: String, fileUrl: String?, completion: @escaping (Bool) -> Void ){
         
         let dict = [
+        "MediaType": type,
         "text": text,
         "senderName": senderName,
         "senderId": senderId,
         "recipientName": recipientName,
-        "recipientId":  recipientId
+        "recipientId":  recipientId,
+        "fileUrl": fileUrl ?? ""
         ]
         REF_CONVERSATIONS.child(id).child("messages").childByAutoId().setValue(dict)
     }

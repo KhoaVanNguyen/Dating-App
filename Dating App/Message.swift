@@ -16,6 +16,8 @@ struct Message {
     var recipientName: String
     var recipientId: String
     var text: String
+    var fileUrl: String?
+    var type: String
     
     init(key: String, data: [String:String]) {
         id = key
@@ -24,5 +26,7 @@ struct Message {
         recipientName = data["recipientName"] ?? ""
         recipientId = data["recipientId"] ?? ""
         text = data["text"] ?? ""
+        fileUrl = data["fileUrl"] ?? ""
+        type = data["MediaType"] ?? ""
     }
 }

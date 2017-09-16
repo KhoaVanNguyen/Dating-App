@@ -19,8 +19,8 @@ class LoginVC: UIViewController {
 
     @IBAction func login_TouchUpInside(_ sender: Any) {
         
-//        emailTF.text = "user@gmail.com"
-//        passwordTF.text = "123456"
+        emailTF.text = "user@gmail.com"
+        passwordTF.text = "123456"
         
         guard let email = emailTF.text, email != "" else {
             showAlert(title: "Erorr", message: "Vui lòng nhập tên tài khoản")

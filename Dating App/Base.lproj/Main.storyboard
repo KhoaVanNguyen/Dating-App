@@ -639,7 +639,7 @@
     </scenes>
     <resources>
         <image name="Asset 1" width="108" height="108"/>
-        <image name="IC_sendtext" width="14" height="14"/>
+        <image name="IC_sendtext" width="24" height="24"/>
         <image name="chat-1" width="32" height="32"/>
         <image name="shine-hashtag" width="32" height="32"/>
     </resources>
