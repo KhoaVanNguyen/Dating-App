@@ -145,17 +145,16 @@ class ChatDetailVC: JSQMessagesViewController {
                 
                 
             case "VIDEO":
-                break
-//                let fileUrl = dict["fileUrl"] as! String
-//                let video = URL(string: fileUrl)!
-//                let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
-//                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: videoItem))
-//                
-//                if self.senderId == senderId {
-//                    videoItem?.appliesMediaViewMaskAsOutgoing = true
-//                } else {
-//                    videoItem?.appliesMediaViewMaskAsOutgoing = false
-//                }
+                let fileUrl = message.fileUrl!
+                let video = URL(string: fileUrl)
+                let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
+                self.messages.append(JSQMessage(senderId: self.senderId, displayName: "anonymous", media: videoItem))
+                
+                if self.senderId == self.senderId {
+                    videoItem?.appliesMediaViewMaskAsOutgoing = true
+                } else {
+                    videoItem?.appliesMediaViewMaskAsOutgoing = false
+                }
                 
             default:
                 print("unknown data type")
@@ -356,7 +355,7 @@ class ChatDetailVC: JSQMessagesViewController {
 //                newMessage.setValue(messageData)
                 
                 
-                DataService.instance.addMessage(toConversation: self.conversation.id, type: "PHOTO", text: "", senderName: "anonymous", senderId: self.senderId, recipientName: "anonymous", recipientId: self.conversation.recipient, fileUrl: fileUrl, completion: { (completed) in
+                DataService.instance.addMessage(toConversation: self.conversation.id, type: "VIDEO", text: "", senderName: "anonymous", senderId: self.senderId, recipientName: "anonymous", recipientId: self.conversation.recipient, fileUrl: fileUrl, completion: { (completed) in
                     
                 })
             }
