@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -184,8 +183,11 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BGh-iU-7IG">
-                                <rect key="frame" x="0.0" y="69" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="69" width="320" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="aau-41-8k4"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CNI-jC-7fW">
                                     <size key="itemSize" width="141" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -237,36 +239,49 @@
                                     <outlet property="delegate" destination="Yud-49-Ytj" id="hRf-aH-elY"/>
                                 </connections>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#yourtag" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oho-pc-aeH" customClass="FancyTextField" customModule="Dating_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="391" width="280" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhX-oZ-iDW" userLabel="View2">
+                                <rect key="frame" x="0.0" y="381" width="320" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#yourtag" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oho-pc-aeH" customClass="FancyTextField" customModule="Dating_App" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="2" width="265" height="46"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.78431372549019607" green="0.78431372549019607" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyF-IF-MAB">
+                                        <rect key="frame" x="275" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="HNM-FB-kY7"/>
+                                            <constraint firstAttribute="height" constant="40" id="z9F-cP-gsq"/>
+                                        </constraints>
+                                        <state key="normal" image="IC_sendtext"/>
+                                        <connections>
+                                            <action selector="send_TouchUpInside:" destination="Yud-49-Ytj" eventType="touchUpInside" id="z8g-g0-6ki"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="7zN-wJ-nZm"/>
+                                    <constraint firstItem="YyF-IF-MAB" firstAttribute="top" secondItem="hhX-oZ-iDW" secondAttribute="top" constant="5" id="9E9-cc-Dkk"/>
+                                    <constraint firstAttribute="bottom" secondItem="YyF-IF-MAB" secondAttribute="bottom" constant="5" id="Lm3-ao-xar"/>
+                                    <constraint firstItem="Oho-pc-aeH" firstAttribute="leading" secondItem="hhX-oZ-iDW" secondAttribute="leading" constant="5" id="T1X-5D-Yrf"/>
+                                    <constraint firstItem="Oho-pc-aeH" firstAttribute="top" secondItem="hhX-oZ-iDW" secondAttribute="top" constant="2" id="hJf-GG-OqW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Oho-pc-aeH" secondAttribute="bottom" constant="2" id="hTq-2a-Ih4"/>
+                                    <constraint firstItem="YyF-IF-MAB" firstAttribute="leading" secondItem="Oho-pc-aeH" secondAttribute="trailing" constant="5" id="udV-y4-YMo"/>
+                                    <constraint firstAttribute="trailing" secondItem="YyF-IF-MAB" secondAttribute="trailing" constant="5" id="vp8-2H-FgH"/>
+                                    <constraint firstAttribute="height" constant="50" id="wNb-Q5-3JA"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.78431372549019607" green="0.78431372549019607" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyF-IF-MAB">
-                                <rect key="frame" x="280" y="391" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="2pD-v0-zCG"/>
-                                    <constraint firstAttribute="height" constant="40" id="vAF-sD-SOf"/>
-                                </constraints>
-                                <state key="normal" image="IC_sendtext"/>
-                                <connections>
-                                    <action selector="send_TouchUpInside:" destination="Yud-49-Ytj" eventType="touchUpInside" id="z8g-g0-6ki"/>
-                                </connections>
-                            </button>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7HV-ik-YZo">
-                                <rect key="frame" x="0.0" y="310" width="320" height="81"/>
+                                <rect key="frame" x="0.0" y="270" width="320" height="111"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jax-Om-EUg">
                                     <size key="itemSize" width="145" height="40"/>
@@ -316,7 +331,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzA-Oc-kPI">
-                                <rect key="frame" x="0.0" y="309" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="269" width="320" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="pEH-hd-1Ga"/>
@@ -325,23 +340,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8i5-fa-mXi" firstAttribute="top" secondItem="YyF-IF-MAB" secondAttribute="bottom" id="BqD-Kc-xOl"/>
                             <constraint firstItem="BzA-Oc-kPI" firstAttribute="leading" secondItem="2Zx-3k-ETC" secondAttribute="leading" id="HbS-g1-gga"/>
-                            <constraint firstAttribute="trailing" secondItem="YyF-IF-MAB" secondAttribute="trailing" id="Jwj-yC-hlJ"/>
                             <constraint firstAttribute="trailing" secondItem="pze-2o-bO2" secondAttribute="trailing" id="L9y-KV-ulC"/>
                             <constraint firstItem="pze-2o-bO2" firstAttribute="leading" secondItem="2Zx-3k-ETC" secondAttribute="leading" id="Qct-Xz-vqx"/>
                             <constraint firstAttribute="trailing" secondItem="BzA-Oc-kPI" secondAttribute="trailing" id="REU-9K-hJR"/>
-                            <constraint firstItem="BGh-iU-7IG" firstAttribute="height" secondItem="2Zx-3k-ETC" secondAttribute="height" multiplier="1:2" id="RTs-uf-pFM"/>
+                            <constraint firstAttribute="trailing" secondItem="hhX-oZ-iDW" secondAttribute="trailing" id="RyD-qp-26B"/>
                             <constraint firstItem="BGh-iU-7IG" firstAttribute="leading" secondItem="2Zx-3k-ETC" secondAttribute="leading" id="SC1-rm-cKJ"/>
                             <constraint firstItem="7HV-ik-YZo" firstAttribute="leading" secondItem="2Zx-3k-ETC" secondAttribute="leading" id="Wr3-pc-vuc"/>
                             <constraint firstAttribute="trailing" secondItem="BGh-iU-7IG" secondAttribute="trailing" id="ZAi-4A-Wef"/>
                             <constraint firstItem="7HV-ik-YZo" firstAttribute="top" secondItem="BzA-Oc-kPI" secondAttribute="bottom" id="fUb-eF-EJG"/>
-                            <constraint firstItem="Oho-pc-aeH" firstAttribute="top" secondItem="7HV-ik-YZo" secondAttribute="bottom" id="fcd-qn-8K8"/>
-                            <constraint firstItem="YyF-IF-MAB" firstAttribute="leading" secondItem="Oho-pc-aeH" secondAttribute="trailing" id="hP9-F6-QwU"/>
                             <constraint firstItem="pze-2o-bO2" firstAttribute="top" secondItem="2Zx-3k-ETC" secondAttribute="top" id="ke8-BM-lb5"/>
-                            <constraint firstItem="Oho-pc-aeH" firstAttribute="leading" secondItem="2Zx-3k-ETC" secondAttribute="leading" id="lax-hG-A5n"/>
-                            <constraint firstItem="8i5-fa-mXi" firstAttribute="top" secondItem="Oho-pc-aeH" secondAttribute="bottom" id="rWh-bZ-cng"/>
+                            <constraint firstItem="hhX-oZ-iDW" firstAttribute="top" secondItem="7HV-ik-YZo" secondAttribute="bottom" id="op5-AI-fkT"/>
+                            <constraint firstItem="hhX-oZ-iDW" firstAttribute="leading" secondItem="2Zx-3k-ETC" secondAttribute="leading" id="pnW-9d-uMM"/>
                             <constraint firstAttribute="trailing" secondItem="7HV-ik-YZo" secondAttribute="trailing" id="sMO-1D-ig2"/>
+                            <constraint firstItem="8i5-fa-mXi" firstAttribute="top" secondItem="hhX-oZ-iDW" secondAttribute="bottom" id="vyn-2W-Twq"/>
                             <constraint firstItem="BGh-iU-7IG" firstAttribute="top" secondItem="pze-2o-bO2" secondAttribute="bottom" constant="5" id="w3e-Bw-vVY"/>
                             <constraint firstItem="BzA-Oc-kPI" firstAttribute="top" secondItem="BGh-iU-7IG" secondAttribute="bottom" id="wOW-WY-5qH"/>
                         </constraints>
@@ -349,6 +361,7 @@
                     <tabBarItem key="tabBarItem" title="Tag" image="shine-hashtag" id="bwx-28-Pmx"/>
                     <connections>
                         <outlet property="collectionView" destination="BGh-iU-7IG" id="XAA-v3-cUd"/>
+                        <outlet property="constraintToBottom" destination="vyn-2W-Twq" id="GGZ-Uh-Ueh"/>
                         <outlet property="hashtagTF" destination="Oho-pc-aeH" id="vs6-il-Q7p"/>
                         <outlet property="userTagCollectionView" destination="7HV-ik-YZo" id="cZb-d2-ho5"/>
                     </connections>
