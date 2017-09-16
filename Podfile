@@ -10,4 +10,5 @@ target 'Dating App' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'ProgressHUD', '~>2.3'
+  pod "GTProgressBar"
 end

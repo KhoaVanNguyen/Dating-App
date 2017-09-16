@@ -12,6 +12,15 @@ import FirebaseAuth
 class AuthService {
     static let instance = AuthService()
     
+    
+    
+    func currentUid() -> String{
+        
+        let currentUser = FIRAuth.auth()?.currentUser
+        return (currentUser?.uid)!
+        
+    }
+    
     func registerUser(withEmail email: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             guard let user = user else {

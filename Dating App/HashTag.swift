@@ -13,7 +13,8 @@ struct HashTag {
     var content: String
     var id: String
     
-//    init(data: [String:String]) {
-//        content = data["content"]
-//    }
+    init(content: String) {
+        self.content = content
+        self.id = randomString(length: 8)
+    }
 }

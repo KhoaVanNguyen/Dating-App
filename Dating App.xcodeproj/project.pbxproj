@@ -23,6 +23,9 @@
 		D288D0B01F6CD62700670DEC /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D0AF1F6CD62700670DEC /* GradientView.swift */; };
 		D288D0B71F6CDF2F00670DEC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D0B61F6CDF2F00670DEC /* Constant.swift */; };
 		D288D0B91F6CE2F600670DEC /* HashTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D0B81F6CE2F600670DEC /* HashTag.swift */; };
+		D288D0BB1F6CE51200670DEC /* HashTagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D0BA1F6CE51200670DEC /* HashTagVC.swift */; };
+		D288D0BD1F6CF25500670DEC /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D0BC1F6CF25500670DEC /* HelperFunctions.swift */; };
+		D288D0BF1F6CF66A00670DEC /* HashTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D0BE1F6CF66A00670DEC /* HashTagCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		D288D0AF1F6CD62700670DEC /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D288D0B61F6CDF2F00670DEC /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		D288D0B81F6CE2F600670DEC /* HashTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashTag.swift; sourceTree = "<group>"; };
+		D288D0BA1F6CE51200670DEC /* HashTagVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashTagVC.swift; sourceTree = "<group>"; };
+		D288D0BC1F6CF25500670DEC /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		D288D0BE1F6CF66A00670DEC /* HashTagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashTagCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +104,11 @@
 		D288D0891F6CD1A900670DEC /* Dating App */ = {
 			isa = PBXGroup;
 			children = (
+				D288D0A81F6CD2FA00670DEC /* GoogleService-Info.plist */,
+				D288D08A1F6CD1A900670DEC /* AppDelegate.swift */,
 				D288D0B51F6CDF2500670DEC /* Utils */,
 				D288D0AA1F6CD3FA00670DEC /* Services */,
 				D288D09C1F6CD20900670DEC /* Views */,
-				D288D0A81F6CD2FA00670DEC /* GoogleService-Info.plist */,
 				D288D09E1F6CD21300670DEC /* Models */,
 				D288D09D1F6CD20E00670DEC /* Controllers */,
 				D288D08E1F6CD1A900670DEC /* Main.storyboard */,
@@ -115,8 +122,8 @@
 		D288D09C1F6CD20900670DEC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D288D08A1F6CD1A900670DEC /* AppDelegate.swift */,
 				D288D09F1F6CD25E00670DEC /* CustomView */,
+				D288D0BE1F6CF66A00670DEC /* HashTagCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -125,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				D288D08C1F6CD1A900670DEC /* LoginVC.swift */,
+				D288D0BA1F6CE51200670DEC /* HashTagVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -162,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				D288D0B61F6CDF2F00670DEC /* Constant.swift */,
+				D288D0BC1F6CF25500670DEC /* HelperFunctions.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -293,11 +302,14 @@
 			files = (
 				D288D08D1F6CD1A900670DEC /* LoginVC.swift in Sources */,
 				D288D0AC1F6CD40500670DEC /* DataService.swift in Sources */,
+				D288D0BF1F6CF66A00670DEC /* HashTagCell.swift in Sources */,
 				D288D0A61F6CD27D00670DEC /* FancyTextField.swift in Sources */,
 				D288D0A71F6CD27D00670DEC /* FancyView.swift in Sources */,
 				D288D0B91F6CE2F600670DEC /* HashTag.swift in Sources */,
 				D288D08B1F6CD1A900670DEC /* AppDelegate.swift in Sources */,
 				D288D0A51F6CD27D00670DEC /* FancyBtn.swift in Sources */,
+				D288D0BD1F6CF25500670DEC /* HelperFunctions.swift in Sources */,
+				D288D0BB1F6CE51200670DEC /* HashTagVC.swift in Sources */,
 				D288D0A41F6CD27D00670DEC /* CircleImage.swift in Sources */,
 				D288D0AE1F6CD44700670DEC /* AuthService.swift in Sources */,
 				D288D0B71F6CDF2F00670DEC /* Constant.swift in Sources */,

@@ -18,6 +18,10 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func login_TouchUpInside(_ sender: Any) {
+        
+        emailTF.text = "user@gmail.com"
+        passwordTF.text = "123456"
+        
         guard let email = emailTF.text, email != "" else {
             showAlert(title: "Erorr", message: "Vui lòng nhập tên tài khoản")
             return
@@ -27,8 +31,12 @@ class LoginVC: UIViewController {
             return
         }
         
+        ProgressHUD.show("Đang đăng nhập")
+        
         AuthService.instance.loginUser(withEmail: email, andPassword: password) { (complete, erorr) in
             
+            
+            ProgressHUD.showSuccess("...")
             if !complete {
                 
                 if (erorr! as NSError).code == 17011 {
@@ -43,7 +51,7 @@ class LoginVC: UIViewController {
                             if erorr != nil {
                                 self.showAlert(title: "ERROR", message: (erorr?.localizedDescription)!)
                             }else {
-                                self.performSegue(withIdentifier: "LoginVCToHashTagVC", sender: nil)
+                                self.performSegue(withIdentifier: "LoginToTabbar", sender: nil)
                             }
                             
                             
@@ -64,13 +72,16 @@ class LoginVC: UIViewController {
                 self.showAlert(title: "ERROR", message: (erorr?.localizedDescription)!)
             }
             else {
-                 self.performSegue(withIdentifier: "LoginVCToHashTagVC", sender: nil)
+                 self.performSegue(withIdentifier: "LoginToTabbar", sender: nil)
             }
             
         }
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.self.endEditing(true)
+    }
     
     func showAlert(title: String, message : String){
         
