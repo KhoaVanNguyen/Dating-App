@@ -41,21 +41,26 @@ class DataService {
 
 
     
+    
     func createDBUser(uid: String, userData: Dictionary<String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
     }
     
     func addNewHashTag(hashtag: String, completion: @escaping (Bool) -> Void ){
 
-        
-        
         DispatchQueue.main.async {
 
             self._REF_HASHTAGS.child(hashtag).updateChildValues([AuthService.instance.currentUid(): true])
             completion(true)
         }
         
-        
+//        AuthService.instance.currentUid()
+    }
+    
+    func loadUserTag(completion: @escaping ([HashTag]) -> Void){
+        _REF_HASHTAGS.child("BietLapTrinh").observe(.childAdded, with: { (snapshotData) in
+            print(snapshotData)
+        })
     }
     
     func getAllHashTag(completion: @escaping ([HashTag]) -> Void ){
@@ -91,7 +96,7 @@ class DataService {
     
     
     func loadAllConversation(completion: @escaping ([Conversation]) -> Void  ){
-        REF_CONVERSATIONS.observeSingleEvent(of: .childAdded, with: { (snapshotData) in
+        REF_CONVERSATIONS.queryOrdered(byChild: "sender").queryEqual(toValue: AuthService.instance.currentUid()).observeSingleEvent(of: .childAdded, with: { (snapshotData) in
             print(snapshotData)
             
             var conversations = [Conversation]()

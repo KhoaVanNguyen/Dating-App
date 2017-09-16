@@ -26,16 +26,26 @@ class ChatVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ChatVCToChatDetailVC" {
-            if let detailVC = segue.destination as? ChatDetailVC {
-                if let conver = sender as? Conversation {
-                    print("HERE")
-                    print(conver)
-                    detailVC.conversation = conver
-                }
-            }
-            
+//        if segue.identifier == "ChatVCToChatDetailVC" {
+//            if let detailVC = segue.destination as? ChatDetailVC {
+//                if let conver = sender as? Conversation {
+//                    print("HERE")
+//                    print(conver)
+//                    detailVC.conversation = conver
+//                }
+//            }
+//            
+//        }
+        let nav = segue.destination as? UINavigationController
+        
+        let chatdetailVC = nav?.viewControllers.first as! ChatDetailVC
+        if let conver = sender as? Conversation {
+                                print("HERE")
+                                print(conver)
+                        chatdetailVC.conversation = conver
         }
+    
+        
     }
 }
 

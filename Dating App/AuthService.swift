@@ -21,14 +21,14 @@ class AuthService {
         
     }
     
-    func registerUser(withEmail email: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+    func registerUser(withEmail email: String, andPassword password: String, gender: Int, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             guard let user = user else {
                 userCreationComplete(false, error)
                 return
             }
             
-            let userData = ["provider": user.providerID, "email": user.email]
+            let userData = ["provider": user.providerID, "email": user.email, "gender": gender] as [String : Any]
             DataService.instance.createDBUser(uid: user.uid, userData: userData)
             userCreationComplete(true, nil)
         }

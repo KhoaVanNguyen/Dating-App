@@ -26,12 +26,22 @@ class HashTagVC: UIViewController {
         userTagCollectionView.dataSource = self
         userTagCollectionView.delegate = self
         ProgressHUD.show("....")
-        DataService.instance.getAllHashTag { (hashtagData) in
-            
-            ProgressHUD.dismiss()
-            self.hashtags = hashtagData
-            self.collectionView.reloadData()
+        
+        
+        DispatchQueue.main.async {
+            DataService.instance.getAllHashTag { (hashtagData) in
+                
+                ProgressHUD.dismiss()
+                self.hashtags = hashtagData
+                self.collectionView.reloadData()
+            }
+            DataService.instance.loadUserTag(completion: { (userTags) in
+                
+            })
         }
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,6 +122,12 @@ extension HashTagVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         userTags.append(hashtags[indexPath.row])
+        
+        DispatchQueue.main.async {
+            DataService.instance.addNewHashTag(hashtag: self.hashtags[indexPath.row].content) { (complete) in
+            }
+        }
+        
         userTagCollectionView.reloadData()
     }
     

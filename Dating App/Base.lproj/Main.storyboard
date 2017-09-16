@@ -30,7 +30,7 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kgv-Vl-CE5">
                                 <rect key="frame" x="20" y="263" width="280" height="1"/>
@@ -61,7 +61,7 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwz-u6-pwj">
                                 <rect key="frame" x="20" y="319" width="280" height="1"/>
@@ -522,7 +522,7 @@
                     <navigationItem key="navigationItem" title="Chat" id="6Ui-MT-gjC"/>
                     <connections>
                         <outlet property="tableView" destination="spE-rf-IUT" id="p6w-wC-pmq"/>
-                        <segue destination="2i7-sV-P30" kind="showDetail" identifier="ChatVCToChatDetailVC" action="showViewController:sender:" id="X5M-Or-S5h"/>
+                        <segue destination="fci-AO-srw" kind="showDetail" identifier="ChatVCToChatDetailVC" action="showViewController:sender:" id="SHt-oL-xMI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSy-sP-eKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -584,7 +584,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDQ-of-0e8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3309.375" y="1580"/>
+            <point key="canvasLocation" x="3510" y="1580"/>
         </scene>
         <!--Chat-->
         <scene sceneID="BcI-bW-dfL">
@@ -606,22 +606,22 @@
             <point key="canvasLocation" x="423.75" y="1580"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="oXS-Vu-gCe">
+        <scene sceneID="lbY-SZ-AYU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2i7-sV-P30" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fci-AO-srw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KjE-sL-sow">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TI7-Oq-yXO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="aKy-Ns-Uyb" kind="relationship" relationship="rootViewController" id="Hj2-do-Uik"/>
+                        <segue destination="aKy-Ns-Uyb" kind="relationship" relationship="rootViewController" id="eDk-gs-251"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4MB-E3-MwF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKJ-IC-Nsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2311.875" y="1580"/>
+            <point key="canvasLocation" x="2512.5" y="1580"/>
         </scene>
     </scenes>
     <resources>

@@ -26,8 +26,9 @@ class LoginVC: UIViewController {
             showAlert(title: "Erorr", message: "Vui lòng nhập tên tài khoản")
             return
         }
-        guard let password = passwordTF.text, password != ""  else {
-            showAlert(title: "Erorr", message: "Vui lòng nhập mật khẩu")
+        
+        guard let password = passwordTF.text, password.characters.count >= 6 else {
+            showAlert(title: "Erorr", message: "Vui lòng nhập mật khẩu lớn hơn 6 ký tự")
             return
         }
         
@@ -45,17 +46,37 @@ class LoginVC: UIViewController {
                     
                     let okAction = UIAlertAction(title: "Đồng ý", style: .default, handler:  {
                         action in
-                        AuthService.instance.registerUser(withEmail: email, andPassword: password, userCreationComplete: { (isComplete, erorr) in
+                        
+                        
+                        
+                        let genderAlert = UIAlertController(title: "Chọn giới tính", message: "Chọn giới tính", preferredStyle: .alert)
+                        
+                        let maleAction = UIAlertAction(title: "Nam", style: .default, handler: { (action) in
                             
-                            
-                            if erorr != nil {
-                                self.showAlert(title: "ERROR", message: (erorr?.localizedDescription)!)
-                            }else {
-                                self.performSegue(withIdentifier: "LoginToTabbar", sender: nil)
-                            }
-                            
+                            self.register(email: email, password: password, gender: 1)
                             
                         })
+                        
+                        let femaleAction = UIAlertAction(title: "Nữ", style: .default, handler: { (action) in
+                            
+                            self.register(email: email, password: password, gender: 0)
+                            
+                        })
+                        let otherAction = UIAlertAction(title: "Khác", style: .default, handler: { (action) in
+                            
+                            self.register(email: email, password: password, gender: 2)
+                            
+                        })
+                         let cancelAction = UIAlertAction(title: "Hủy", style: .default, handler: nil)
+                        
+                        genderAlert.addAction(femaleAction)
+                        genderAlert.addAction(maleAction)
+                        genderAlert.addAction(otherAction)
+                        genderAlert.addAction(cancelAction)
+                        self.present(genderAlert, animated: true, completion: nil)
+                        
+                        
+                       
                     })
                     
                     let cancelAction = UIAlertAction(title: "Hem", style: .default, handler: nil)
@@ -78,6 +99,21 @@ class LoginVC: UIViewController {
         }
         
     }
+    
+    func register(email: String, password: String, gender: Int){
+        AuthService.instance.registerUser(withEmail: email, andPassword: password, gender: gender, userCreationComplete: { (isComplete, erorr) in
+            
+            
+            if erorr != nil {
+                self.showAlert(title: "ERROR", message: (erorr?.localizedDescription)!)
+            }else {
+                self.performSegue(withIdentifier: "LoginToTabbar", sender: nil)
+            }
+            
+            
+        })
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.self.endEditing(true)
