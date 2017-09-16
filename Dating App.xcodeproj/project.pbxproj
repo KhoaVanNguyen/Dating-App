@@ -10,6 +10,8 @@
 		6B1F66742276344D29933551 /* Pods_Dating_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 198FE76D7D5DC78437A06109 /* Pods_Dating_App.framework */; };
 		D20759961F6D2D9800942C16 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759951F6D2D9800942C16 /* ChatVC.swift */; };
 		D20759981F6D2DA300942C16 /* ChatDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759971F6D2DA300942C16 /* ChatDetailVC.swift */; };
+		D207599A1F6D478E00942C16 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759991F6D478E00942C16 /* Conversation.swift */; };
+		D207599C1F6D4D4600942C16 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207599B1F6D4D4600942C16 /* Message.swift */; };
 		D288D08B1F6CD1A900670DEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D08A1F6CD1A900670DEC /* AppDelegate.swift */; };
 		D288D08D1F6CD1A900670DEC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D08C1F6CD1A900670DEC /* LoginVC.swift */; };
 		D288D0901F6CD1A900670DEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D288D08E1F6CD1A900670DEC /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		5A3A53AC8FA4EB60E4738846 /* Pods-Dating App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dating App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dating App/Pods-Dating App.release.xcconfig"; sourceTree = "<group>"; };
 		D20759951F6D2D9800942C16 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		D20759971F6D2DA300942C16 /* ChatDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailVC.swift; sourceTree = "<group>"; };
+		D20759991F6D478E00942C16 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		D207599B1F6D4D4600942C16 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D288D0871F6CD1A900670DEC /* Dating App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dating App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D288D08A1F6CD1A900670DEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D288D08C1F6CD1A900670DEC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				D288D0B81F6CE2F600670DEC /* HashTag.swift */,
+				D20759991F6D478E00942C16 /* Conversation.swift */,
+				D207599B1F6D4D4600942C16 /* Message.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 				D288D08D1F6CD1A900670DEC /* LoginVC.swift in Sources */,
 				D288D0AC1F6CD40500670DEC /* DataService.swift in Sources */,
 				D288D0BF1F6CF66A00670DEC /* HashTagCell.swift in Sources */,
+				D207599C1F6D4D4600942C16 /* Message.swift in Sources */,
 				D288D0A61F6CD27D00670DEC /* FancyTextField.swift in Sources */,
 				D288D0A71F6CD27D00670DEC /* FancyView.swift in Sources */,
 				D288D0B91F6CE2F600670DEC /* HashTag.swift in Sources */,
@@ -317,6 +324,7 @@
 				D288D0BD1F6CF25500670DEC /* HelperFunctions.swift in Sources */,
 				D20759981F6D2DA300942C16 /* ChatDetailVC.swift in Sources */,
 				D20759961F6D2D9800942C16 /* ChatVC.swift in Sources */,
+				D207599A1F6D478E00942C16 /* Conversation.swift in Sources */,
 				D288D0BB1F6CE51200670DEC /* HashTagVC.swift in Sources */,
 				D288D0A41F6CD27D00670DEC /* CircleImage.swift in Sources */,
 				D288D0AE1F6CD44700670DEC /* AuthService.swift in Sources */,

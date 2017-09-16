@@ -9,27 +9,59 @@
 import UIKit
 
 class ChatVC: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
 
+    var conversations = [Conversation]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        DataService.instance.loadAllConversation { (conversations) in
+            self.conversations = conversations
+            self.tableView.reloadData()
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ChatVCToChatDetailVC" {
+            if let detailVC = segue.destination as? ChatDetailVC {
+                if let conver = sender as? Conversation {
+                    print("HERE")
+                    print(conver)
+                    detailVC.conversation = conver
+                }
+            }
+            
+        }
     }
-    */
-
 }
+
+extension ChatVC: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return conversations.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConversationCell", for: indexPath)
+        cell.textLabel?.text = conversations[indexPath.row].id
+        return cell
+    }
+}
+
+extension ChatVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ChatVCToChatDetailVC", sender: conversations[indexPath.row])
+        
+    }
+}
+
+
+
+
+

@@ -17,31 +17,21 @@ import FirebaseStorage
 import FirebaseAuth
 import SDWebImage
 class ChatDetailVC: JSQMessagesViewController {
+    
+    var conversation: Conversation!
     var messages = [JSQMessage]()
     var avatarDict = [String: JSQMessagesAvatarImage]()
+    
     var messageRef = FIRDatabase.database().reference().child("messages")
+    
     //    let photoCache = NSCache()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
-        
-//        if let currentUser = FIRAuth.auth()?.currentUser
-//        {
-//            self.senderId = currentUser.uid
-//            
-//            if currentUser.isAnonymous == true
-//            {
-//                self.senderDisplayName = "anonymous"
-//            } else
-//            {
-//                self.senderDisplayName = "\(currentUser.displayName!)"
-//            }
-//            
-//        }
-        self.senderId = "1"
-        self.senderDisplayName = "Khoa"
+        print(conversation)
+        self.senderId = AuthService.instance.currentUid()
+        self.senderDisplayName = "anonymous"
         observeMessages()
     }
     
@@ -77,90 +67,29 @@ class ChatDetailVC: JSQMessagesViewController {
     }
     
     func observeMessages() {
-        messageRef.observe(.childAdded, with: { snapshot in
-            print("HERE")
-             print(snapshot.value)
-            if let dict = snapshot.value as? [String: AnyObject] {
-                let mediaType = dict["MediaType"] as! String
-                let senderId = dict["senderId"] as! String
-                let senderName = dict["senderName"] as! String
-                
-//                self.observeUsers(senderId)
-                switch mediaType {
-                    
-                case "TEXT":
-                    
-                    let text = dict["text"] as! String
-                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
-                    
-                case "PHOTO":
-                    //                    var photo = JSQPhotoMediaItem(image: nil)
-                    //                    let fileUrl = dict["fileUrl"] as! String
-                    //
-                    //                    if let cachedPhoto = self.photoCache.objectForKey(fileUrl) as? JSQPhotoMediaItem {
-                    //                        photo = cachedPhoto
-                    //                        self.collectionView.reloadData()
-                    //                    } else {
-                    //                        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), {
-                    //                            let data = NSData(contentsOfURL: NSURL(string: fileUrl)!)
-                    //                            dispatch_async(dispatch_get_main_queue(), {
-                    //                                let image = UIImage(data: data!)
-                    //                                photo.image = image
-                    //                                self.collectionView.reloadData()
-                    //                                self.photoCache.setObject(photo, forKey: fileUrl)
-                    //                            })
-                    //                        })
-                    //                    }
-                    let photo = JSQPhotoMediaItem(image: nil)
-                    let fileUrl = dict["fileUrl"] as! String
-                    let downloader = SDWebImageDownloader.shared()
-                    downloader?.downloadImage(with: URL(string: fileUrl)!, options: [], progress: nil, completed: { (image, data, error, finished) in
-                        DispatchQueue.main.async(execute: {
-                            photo?.image = image
-                            self.collectionView.reloadData()
-                        })
-                    })
-                    
-                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                    
-                    if self.senderId == senderId {
-                        photo?.appliesMediaViewMaskAsOutgoing = true
-                    } else {
-                        photo?.appliesMediaViewMaskAsOutgoing = false
-                    }
-                    
-                    
-//                case "VIDEO":
-//                    
-//                    let fileUrl = dict["fileUrl"] as! String
-//                    let video = URL(string: fileUrl)!
-//                    let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
-//                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: videoItem))
-//                    
-//                    if self.senderId == senderId {
-//                        videoItem?.appliesMediaViewMaskAsOutgoing = true
-//                    } else {
-//                        videoItem?.appliesMediaViewMaskAsOutgoing = false
-//                    }
-                    
-                default:
-                    print("unknown data type")
-                    
-                }
-                
-                self.collectionView.reloadData()
-                
-            }
-        })
+       
+        DataService.instance.loadMessage(inConversation: conversation.id) { (message) in
+            print(message)
+            let jMessage = JSQMessage(senderId: message.senderId, displayName: message.senderName, text: message.text
+            )
+            self.messages.append(jMessage!)
+            self.collectionView.reloadData()
+        }
+        
+        
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         //        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
         //        collectionView.reloadData()
         //        print(messages)
-        let newMessage = messageRef.childByAutoId()
-        let messageData = ["text": text, "senderId": senderId, "senderName": senderDisplayName, "MediaType": "TEXT"]
-        newMessage.setValue(messageData)
+        
+        DataService.instance.addMessage(toConversation: self.conversation.id, text: text, senderName: "annonymous", senderId: AuthService.instance.currentUid(), recipientName: "annonymous", recipientId: conversation.recipient) { (complete) in
+            if complete {
+                self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
+            }
+        }
+    
         self.finishSendingMessage()
     }
     
@@ -207,14 +136,18 @@ class ChatDetailVC: JSQMessagesViewController {
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item]
         let bubbleFactory = JSQMessagesBubbleImageFactory()
+        
+        
+        
         if message.senderId == self.senderId {
-            
             return bubbleFactory!.outgoingMessagesBubbleImage(with: .black)
         } else {
             
             return bubbleFactory!.incomingMessagesBubbleImage(with: .blue)
             
         }
+        
+       
         
         
     }
