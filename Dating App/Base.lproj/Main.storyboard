@@ -369,7 +369,7 @@
                     <connections>
                         <segue destination="Yud-49-Ytj" kind="relationship" relationship="viewControllers" id="T4S-ZO-Kub"/>
                         <segue destination="iGe-1b-vqx" kind="relationship" relationship="viewControllers" id="exH-SG-0aN"/>
-                        <segue destination="7jL-wE-hAx" kind="relationship" relationship="viewControllers" id="Xc9-RM-ocY"/>
+                        <segue destination="Y3J-u5-SEq" kind="relationship" relationship="viewControllers" id="Xc9-RM-ocY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4M5-S6-gJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,7 +478,7 @@
         <!--Chat-->
         <scene sceneID="HST-TR-uZY">
             <objects>
-                <viewController id="7jL-wE-hAx" sceneMemberID="viewController">
+                <viewController id="7jL-wE-hAx" customClass="ChatVC" customModule="Dating_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0FJ-FR-PXF"/>
                         <viewControllerLayoutGuide type="bottom" id="fYI-Q0-SGc"/>
@@ -486,13 +486,99 @@
                     <view key="view" contentMode="scaleToFill" id="Z3J-I2-NDl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OV-eG-bY3">
+                                <rect key="frame" x="75" y="80" width="144" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="aKy-Ns-Uyb" kind="showDetail" id="5BO-bA-5kU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="chat-1" id="4Fd-X2-xHq"/>
+                    <navigationItem key="navigationItem" title="Chat" id="6Ui-MT-gjC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSy-sP-eKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424" y="1581"/>
+            <point key="canvasLocation" x="1421.25" y="1580"/>
+        </scene>
+        <!--#username-->
+        <scene sceneID="tBR-2o-ZTC">
+            <objects>
+                <viewController id="aKy-Ns-Uyb" customClass="ChatDetailVC" customModule="Dating_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vBy-lk-TjZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="yIv-q1-esY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Noo-xT-LYI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8N-uq-pJt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top phù hợp với bạn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTi-bl-3j9">
+                                        <rect key="frame" x="10" y="15" width="300" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="fVf-6e-Q7d"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="gTi-bl-3j9" firstAttribute="centerY" secondItem="G8N-uq-pJt" secondAttribute="centerY" id="PaM-jR-5gL"/>
+                                    <constraint firstAttribute="height" constant="50" id="TDl-8g-qbw"/>
+                                    <constraint firstItem="gTi-bl-3j9" firstAttribute="leading" secondItem="G8N-uq-pJt" secondAttribute="leading" constant="10" id="ZBR-EH-qio"/>
+                                    <constraint firstItem="gTi-bl-3j9" firstAttribute="centerX" secondItem="G8N-uq-pJt" secondAttribute="centerX" id="uRF-R7-Yef"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y9I-dT-dtN">
+                                <rect key="frame" x="0.0" y="50" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Vzv-n6-sHF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G8N-uq-pJt" firstAttribute="leading" secondItem="Noo-xT-LYI" secondAttribute="leading" id="3Gc-Ng-9O1"/>
+                            <constraint firstItem="y9I-dT-dtN" firstAttribute="leading" secondItem="Noo-xT-LYI" secondAttribute="leading" id="Dtq-sD-T93"/>
+                            <constraint firstAttribute="trailing" secondItem="y9I-dT-dtN" secondAttribute="trailing" id="J4v-on-BlA"/>
+                            <constraint firstItem="G8N-uq-pJt" firstAttribute="top" secondItem="Noo-xT-LYI" secondAttribute="top" id="ZSb-uB-2aJ"/>
+                            <constraint firstAttribute="trailing" secondItem="G8N-uq-pJt" secondAttribute="trailing" id="vaU-vP-m5o"/>
+                            <constraint firstItem="y9I-dT-dtN" firstAttribute="top" secondItem="G8N-uq-pJt" secondAttribute="bottom" id="wdC-PF-u9G"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="#username" id="uZe-mn-ggi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hDQ-of-0e8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2311.875" y="1580"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="BcI-bW-dfL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y3J-u5-SEq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chat" image="chat-1" id="4Fd-X2-xHq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k11-aU-bVZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7jL-wE-hAx" kind="relationship" relationship="rootViewController" id="dqB-Nu-Pix"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Xi-py-U4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="423.75" y="1580"/>
         </scene>
     </scenes>
     <resources>

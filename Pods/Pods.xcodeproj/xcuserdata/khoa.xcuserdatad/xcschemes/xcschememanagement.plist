@@ -9,7 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GTProgressBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -32,17 +52,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>71981C53126F02C5EFC1E4C7E6A4F373</key>
+		<key>235619B3D72B062799EFEBED371B7F8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A2C17E128D418F76F25316069E359F74</key>
+		<key>243C3F6AE4095EA87036B8B603FBCB9C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4BBAD496E2C0EF05AD2112E86931F672</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2A926AAAA2B1468BE1365003DA13153</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7DCF2B547F7871B9BFD74DE93B0E173</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D0581AF7BF4A6DA140D280B19ECC7BFF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

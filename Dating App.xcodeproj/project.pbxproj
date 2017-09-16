@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B1F66742276344D29933551 /* Pods_Dating_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 198FE76D7D5DC78437A06109 /* Pods_Dating_App.framework */; };
+		D20759961F6D2D9800942C16 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759951F6D2D9800942C16 /* ChatVC.swift */; };
+		D20759981F6D2DA300942C16 /* ChatDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20759971F6D2DA300942C16 /* ChatDetailVC.swift */; };
 		D288D08B1F6CD1A900670DEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D08A1F6CD1A900670DEC /* AppDelegate.swift */; };
 		D288D08D1F6CD1A900670DEC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288D08C1F6CD1A900670DEC /* LoginVC.swift */; };
 		D288D0901F6CD1A900670DEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D288D08E1F6CD1A900670DEC /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 		172665F1F8F077A8C698F24A /* Pods-Dating App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dating App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dating App/Pods-Dating App.debug.xcconfig"; sourceTree = "<group>"; };
 		198FE76D7D5DC78437A06109 /* Pods_Dating_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dating_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3A53AC8FA4EB60E4738846 /* Pods-Dating App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dating App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dating App/Pods-Dating App.release.xcconfig"; sourceTree = "<group>"; };
+		D20759951F6D2D9800942C16 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		D20759971F6D2DA300942C16 /* ChatDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailVC.swift; sourceTree = "<group>"; };
 		D288D0871F6CD1A900670DEC /* Dating App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dating App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D288D08A1F6CD1A900670DEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D288D08C1F6CD1A900670DEC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 			children = (
 				D288D08C1F6CD1A900670DEC /* LoginVC.swift */,
 				D288D0BA1F6CE51200670DEC /* HashTagVC.swift */,
+				D20759951F6D2D9800942C16 /* ChatVC.swift */,
+				D20759971F6D2DA300942C16 /* ChatDetailVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -309,6 +315,8 @@
 				D288D08B1F6CD1A900670DEC /* AppDelegate.swift in Sources */,
 				D288D0A51F6CD27D00670DEC /* FancyBtn.swift in Sources */,
 				D288D0BD1F6CF25500670DEC /* HelperFunctions.swift in Sources */,
+				D20759981F6D2DA300942C16 /* ChatDetailVC.swift in Sources */,
+				D20759961F6D2D9800942C16 /* ChatVC.swift in Sources */,
 				D288D0BB1F6CE51200670DEC /* HashTagVC.swift in Sources */,
 				D288D0A41F6CD27D00670DEC /* CircleImage.swift in Sources */,
 				D288D0AE1F6CD44700670DEC /* AuthService.swift in Sources */,

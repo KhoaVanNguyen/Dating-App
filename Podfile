@@ -8,7 +8,10 @@ target 'Dating App' do
   # Pods for Dating App
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'FirebaseStorage'
   pod 'Firebase/Auth'
   pod 'ProgressHUD', '~>2.3'
   pod "GTProgressBar"
+  pod 'JSQMessagesViewController'
+  pod 'SDWebImage'
 end
