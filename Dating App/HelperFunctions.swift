@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import CoreLocation
 extension String {
     func removingWhitespaces() -> String {
         return components(separatedBy: .whitespaces).joined()
@@ -41,3 +41,17 @@ func randomString(length: Int) -> String {
     
     return randomString
 }
+
+func calculateDistanceBetween(firsLat: Double, firstLong: Double, secondLat: Double, secondLong: Double) -> String {
+    
+    let coordinate₀ = CLLocation(latitude: firsLat , longitude: firstLong)
+    let coordinate₁ = CLLocation(latitude: secondLat, longitude: secondLong)
+    
+    let distanceInMeters = coordinate₀.distance(from: coordinate₁)
+    
+    let result = String(format: "%.2f", distanceInMeters/1000)
+    
+//    return distanceInMeters
+    return result
+}
+

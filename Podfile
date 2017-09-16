@@ -14,4 +14,6 @@ target 'Dating App' do
   pod "GTProgressBar"
   pod 'JSQMessagesViewController'
   pod 'SDWebImage'
+  pod 'Alamofire', '~>4.0.1'
+  pod 'SwiftyJSON', '~>3.1'
 end

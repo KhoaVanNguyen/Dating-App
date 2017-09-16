@@ -16,6 +16,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
 import SDWebImage
+import CoreLocation
 class ChatDetailVC: JSQMessagesViewController {
     
     var conversation: Conversation!
@@ -32,15 +33,22 @@ class ChatDetailVC: JSQMessagesViewController {
         self.navigationItem.hidesBackButton = false
         
         
-        let backBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "IC_sendtext"), style: .plain, target: self, action: #selector(self.back_TouchUpInside))
+        let backBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "back-arrow"), style: .plain, target: self, action: #selector(self.back_TouchUpInside))
         backBtn.tintColor = #colorLiteral(red: 0.952462852, green: 0.3920735717, blue: 0.9882180095, alpha: 1)
         navigationItem.setLeftBarButton(backBtn, animated: true)
         
+        
+        let leftButton = UIButton()
+        leftButton.setImage(#imageLiteral(resourceName: "Glyphs  Navigation Bar  Add"), for: .normal)
+        
+        self.inputToolbar.contentView.leftBarButtonItem = leftButton
         
         
         self.senderId = AuthService.instance.currentUid()
         self.senderDisplayName = "anonymous"
         observeMessages()
+        
+        
     }
     
     func back_TouchUpInside(){
@@ -93,7 +101,7 @@ class ChatDetailVC: JSQMessagesViewController {
                 let jMessage = JSQMessage(senderId: message.senderId, displayName: message.senderName, text: message.text
                 )
                 self.messages.append(jMessage!)
-                self.collectionView.reloadData()
+               
                 
             case "PHOTO":
                 var photo = JSQPhotoMediaItem(image: nil)
@@ -105,19 +113,17 @@ class ChatDetailVC: JSQMessagesViewController {
                 } else {
                     
                     DispatchQueue.main.async {
-//                        let data = NSData(contentsOfURL: NSURL(string: fileUrl)! as URL)
-
                         do {
                             
                             let data = try Data(contentsOf: URL(string: fileUrl)!)
                             let image = UIImage(data: data)
                             photo?.image = image
-                            self.collectionView.reloadData()
+                            
                             self.photoCache.setObject(photo!, forKey: fileUrl as AnyObject)
 
                             
                             let photo = JSQPhotoMediaItem(image: nil)
-                            let fileUrl = message.fileUrl as! String
+                            let fileUrl = message.fileUrl!
                             let downloader = SDWebImageDownloader.shared()
                             downloader?.downloadImage(with: URL(string: fileUrl)!, options: [], progress: nil, completed: { (image, data, error, finished) in
                                 DispatchQueue.main.async(execute: {
@@ -128,10 +134,11 @@ class ChatDetailVC: JSQMessagesViewController {
                             
                             self.messages.append(JSQMessage(senderId: self.senderId, displayName: "anonymous", media: photo))
                             
-                            if self.senderId == self.senderId {
+                             if message.senderId == self.senderId {
                                 photo?.appliesMediaViewMaskAsOutgoing = true
                             } else {
                                 photo?.appliesMediaViewMaskAsOutgoing = false
+                                
                             }
                         }catch {
                             
@@ -150,7 +157,7 @@ class ChatDetailVC: JSQMessagesViewController {
                 let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
                 self.messages.append(JSQMessage(senderId: self.senderId, displayName: "anonymous", media: videoItem))
                 
-                if self.senderId == self.senderId {
+                if message.senderId == self.senderId {
                     videoItem?.appliesMediaViewMaskAsOutgoing = true
                 } else {
                     videoItem?.appliesMediaViewMaskAsOutgoing = false
@@ -161,8 +168,9 @@ class ChatDetailVC: JSQMessagesViewController {
                 
             }
             
+             self.collectionView.reloadData()
             
-            
+
          
         }
         
@@ -170,10 +178,7 @@ class ChatDetailVC: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        //        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
-        //        collectionView.reloadData()
-        //        print(messages)
-        
+      
         DataService.instance.addMessage(toConversation: self.conversation.id, type: "TEXT", text: text, senderName: "annonymous", senderId: AuthService.instance.currentUid(), recipientName: "annonymous", recipientId: conversation.recipient, fileUrl: nil) { (complete) in
             if complete {
                 self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
@@ -186,9 +191,14 @@ class ChatDetailVC: JSQMessagesViewController {
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
+        
+        
+        sender.imageView?.image = #imageLiteral(resourceName: "user-black")
+    
+        
         print("didPressAccessoryButton")
         
-        let sheet = UIAlertController(title: "Media Messages", message: "Please select a media", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let sheet = UIAlertController(title: APP_TITLE, message: "Please select a option", preferredStyle: UIAlertControllerStyle.actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) in
             
         }
@@ -201,16 +211,33 @@ class ChatDetailVC: JSQMessagesViewController {
             self.getMediaFrom(kUTTypeMovie)
             
         }
+        let adsVC = UIAlertAction(title: "Mời bạn đi chơi", style: UIAlertActionStyle.default) { (alert: UIAlertAction) in
+            self.gotToAdsVC()
+        }
         
         
         sheet.addAction(photoLibrary)
         sheet.addAction(videoLibrary)
+        sheet.addAction(adsVC)
         sheet.addAction(cancel)
+        
         self.present(sheet, animated: true, completion: nil)
         
         //        let imagePicker = UIImagePickerController()
         //        imagePicker.delegate = self
         //        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nav = segue.destination as? UINavigationController
+        
+        let adVC = nav?.viewControllers.first as! AdsVC
+        adVC.delegate = self
+
+    }
+    
+    func gotToAdsVC(){
+        performSegue(withIdentifier: "ChatDetailToAds", sender: nil)
     }
     
     func getMediaFrom(_ type: CFString) {
@@ -223,6 +250,10 @@ class ChatDetailVC: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapCellAt indexPath: IndexPath!, touchLocation: CGPoint) {
+        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
@@ -239,10 +270,6 @@ class ChatDetailVC: JSQMessagesViewController {
             return bubbleFactory!.incomingMessagesBubbleImage(with: #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.9176470588, alpha: 1))
             
         }
-        
-       
-        
-        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
@@ -382,6 +409,60 @@ extension ChatDetailVC: UIImagePickerControllerDelegate, UINavigationControllerD
         
     }
 }
+
+extension ChatDetailVC: AdsVCDelegate{
+    func invite(ad: Ad) {
+        
+        let text = "Mời bạn đi \(ad.title) tại \(ad.address) với mình nhé. \n Thông tin thêm từ ứng dụng: \(ad.url) "
+        
+        
+        
+        DataService.instance.addMessage(toConversation: self.conversation.id, type: "TEXT" , text: text, senderName: "annonymous", senderId: AuthService.instance.currentUid(), recipientName: "annonymous", recipientId: conversation.recipient, fileUrl: nil) { (complete) in
+            if complete {
+                self.messages.append(JSQMessage(senderId: self.senderId, displayName: "An danh", text: text))
+            }
+        }
+        
+        
+        self.finishSendingMessage()
+        self.scrollToBottom(animated: true)
+        
+        
+//        let location = CLLocation(latitude: ad.lat, longitude: ad.long)
+////        let item = JSQLocationMediaItem(location: location)
+//       
+//        
+////        let media: JSQLocationMediaItem = JSQLocationMediaItem(location: location)
+//        
+//        let media = JSQPhotoMediaItem(image: #imageLiteral(resourceName: "Maps"))
+//        let input = JSQMessagesInputToolbar()
+//        
+//        
+//        
+//        input.sendButtonOnRight = true
+//        
+//        
+//        media?.appliesMediaViewMaskAsOutgoing = true
+//        
+//        
+//        
+//        
+//        
+//        
+//        let jMessage = JSQMessage(senderId: conversation.sender, displayName: "anonymous", media: media)
+//       
+//        
+//        
+//        
+//        messages.append(jMessage!)
+//        self.finishSendingMessage(animated: true)
+//        self.collectionView.reloadData()
+        
+    }
+
+    
+}
+
 
 
 

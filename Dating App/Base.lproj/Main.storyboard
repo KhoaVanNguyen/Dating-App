@@ -389,7 +389,7 @@
             </objects>
             <point key="canvasLocation" x="-115" y="634"/>
         </scene>
-        <!--Item-->
+        <!--Match-->
         <scene sceneID="hNe-CM-JeK">
             <objects>
                 <viewController id="iGe-1b-vqx" sceneMemberID="viewController">
@@ -482,7 +482,7 @@
                             <constraint firstItem="eox-5G-D4U" firstAttribute="leading" secondItem="07k-GD-Tjw" secondAttribute="leading" id="uWP-N5-SPo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="5uw-fP-mYa"/>
+                    <tabBarItem key="tabBarItem" title="Match" image="network" id="5uw-fP-mYa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BF1-QF-slE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -594,10 +594,139 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aqv-xC-yCr"/>
+                    <connections>
+                        <segue destination="HsP-u3-47h" kind="show" identifier="ChatDetailToAds" action="showDetailViewController:sender:" id="yQj-WX-7kh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDQ-of-0e8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3510" y="1580"/>
+        </scene>
+        <!--Mời bạn đi chơi-->
+        <scene sceneID="Te6-9r-Bhh">
+            <objects>
+                <viewController id="LVx-5Z-VRl" customClass="AdsVC" customModule="Dating_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wwn-W9-RSZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="6oT-cg-wPV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BEZ-9q-zhy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sGs-qH-IS3">
+                                <rect key="frame" x="20" y="74" width="280" height="29"/>
+                                <segments>
+                                    <segment title="Quán ăn"/>
+                                    <segment title="Cafe"/>
+                                    <segment title="Voucher"/>
+                                    <segment title="Phim"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segment_ValueChanged:" destination="LVx-5Z-VRl" eventType="valueChanged" id="y6C-Ql-wDB"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="166" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ygm-fv-Fae">
+                                <rect key="frame" x="20" y="117" width="280" height="363"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdCell" rowHeight="166" id="nWR-xW-G3O" customClass="AdCell" customModule="Dating_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="280" height="166"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nWR-xW-G3O" id="nyo-f0-Gcc">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="166"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pr-ve-pMw">
+                                                    <rect key="frame" x="10" y="10" width="20" height="42"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="6wW-FE-Hfm"/>
+                                                        <constraint firstAttribute="height" constant="42" id="q4W-tM-mEF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AtE-5d-9an" customClass="CircleImage" customModule="Dating_App" customModuleProvider="target">
+                                                    <rect key="frame" x="40" y="10" width="64" height="64"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="64" id="hlC-PF-KlB"/>
+                                                        <constraint firstAttribute="width" constant="64" id="xr8-ER-3XK"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMi-ov-xKU">
+                                                    <rect key="frame" x="114" y="10" width="176" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="wAk-18-zLJ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkM-ZR-KeA">
+                                                    <rect key="frame" x="40" y="84" width="64" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="tz5-rc-HQd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Av-Pv-PNU">
+                                                    <rect key="frame" x="114" y="65" width="156" height="90.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="VMi-ov-xKU" secondAttribute="trailing" constant="-10" id="58j-Cx-bqm"/>
+                                                <constraint firstItem="qkM-ZR-KeA" firstAttribute="leading" secondItem="AtE-5d-9an" secondAttribute="leading" id="9HB-eF-kXZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="2Av-Pv-PNU" secondAttribute="bottom" constant="10" id="MCy-kc-IbP"/>
+                                                <constraint firstItem="6Pr-ve-pMw" firstAttribute="top" secondItem="nyo-f0-Gcc" secondAttribute="top" constant="10" id="O4K-Hu-Fhb"/>
+                                                <constraint firstItem="AtE-5d-9an" firstAttribute="top" secondItem="nyo-f0-Gcc" secondAttribute="top" constant="10" id="QbG-b2-fcQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="2Av-Pv-PNU" secondAttribute="trailing" constant="10" id="Qjm-vT-Wuc"/>
+                                                <constraint firstItem="qkM-ZR-KeA" firstAttribute="trailing" secondItem="AtE-5d-9an" secondAttribute="trailing" id="RO2-ZZ-wHo"/>
+                                                <constraint firstItem="2Av-Pv-PNU" firstAttribute="top" secondItem="VMi-ov-xKU" secondAttribute="bottom" constant="10" id="daN-jh-tWT"/>
+                                                <constraint firstItem="6Pr-ve-pMw" firstAttribute="leading" secondItem="nyo-f0-Gcc" secondAttribute="leading" constant="10" id="ipf-SX-Qic"/>
+                                                <constraint firstItem="AtE-5d-9an" firstAttribute="leading" secondItem="6Pr-ve-pMw" secondAttribute="trailing" constant="10" id="ndq-9M-t5e"/>
+                                                <constraint firstItem="qkM-ZR-KeA" firstAttribute="top" secondItem="AtE-5d-9an" secondAttribute="bottom" constant="10" id="rhx-7V-11w"/>
+                                                <constraint firstItem="VMi-ov-xKU" firstAttribute="leading" secondItem="AtE-5d-9an" secondAttribute="trailing" constant="10" id="s30-SP-DLw"/>
+                                                <constraint firstItem="2Av-Pv-PNU" firstAttribute="leading" secondItem="qkM-ZR-KeA" secondAttribute="trailing" constant="10" id="tQT-sA-1Qn"/>
+                                                <constraint firstItem="VMi-ov-xKU" firstAttribute="top" secondItem="nyo-f0-Gcc" secondAttribute="top" constant="10" id="zQs-74-BnY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLbl" destination="2Av-Pv-PNU" id="pFI-wn-ND9"/>
+                                            <outlet property="distanceLbl" destination="qkM-ZR-KeA" id="Dke-5a-uKH"/>
+                                            <outlet property="imageLbl" destination="AtE-5d-9an" id="VbB-1C-aZ5"/>
+                                            <outlet property="numberLbl" destination="6Pr-ve-pMw" id="rcG-QZ-c5X"/>
+                                            <outlet property="titleLbl" destination="VMi-ov-xKU" id="0dF-Nr-u90"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ygm-fv-Fae" firstAttribute="leading" secondItem="BEZ-9q-zhy" secondAttribute="leading" constant="20" id="3lh-Yj-15j"/>
+                            <constraint firstAttribute="trailing" secondItem="sGs-qH-IS3" secondAttribute="trailing" constant="20" id="9Pm-cV-nOM"/>
+                            <constraint firstItem="sGs-qH-IS3" firstAttribute="leading" secondItem="BEZ-9q-zhy" secondAttribute="leading" constant="20" id="E0U-FS-Otf"/>
+                            <constraint firstAttribute="trailing" secondItem="ygm-fv-Fae" secondAttribute="trailing" constant="20" id="FPj-nK-pHi"/>
+                            <constraint firstItem="sGs-qH-IS3" firstAttribute="top" secondItem="wwn-W9-RSZ" secondAttribute="bottom" constant="10" id="aJg-8h-3Rb"/>
+                            <constraint firstItem="ygm-fv-Fae" firstAttribute="top" secondItem="sGs-qH-IS3" secondAttribute="bottom" constant="15" id="dq5-9j-NVI"/>
+                            <constraint firstItem="6oT-cg-wPV" firstAttribute="top" secondItem="ygm-fv-Fae" secondAttribute="bottom" id="oVA-CM-XsE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mời bạn đi chơi" id="KEG-8D-z3b"/>
+                    <connections>
+                        <outlet property="segment" destination="sGs-qH-IS3" id="4QS-xd-HAk"/>
+                        <outlet property="tableView" destination="ygm-fv-Fae" id="cBg-9D-8y4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Il-nL-L4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5349.375" y="1571.25"/>
         </scene>
         <!--Chat-->
         <scene sceneID="BcI-bW-dfL">
@@ -636,11 +765,30 @@
             </objects>
             <point key="canvasLocation" x="2512.5" y="1580"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fdb-ex-WJm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HsP-u3-47h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="81P-eo-U2J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LVx-5Z-VRl" kind="relationship" relationship="rootViewController" id="KC0-c0-Oe7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HKh-cz-Pc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4351.875" y="1571.25"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Asset 1" width="108" height="108"/>
         <image name="IC_sendtext" width="24" height="24"/>
         <image name="chat-1" width="32" height="32"/>
+        <image name="network" width="40" height="37"/>
         <image name="shine-hashtag" width="32" height="32"/>
     </resources>
 </document>

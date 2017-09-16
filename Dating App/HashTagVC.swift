@@ -8,6 +8,7 @@
 
 import UIKit
 import ProgressHUD
+import CoreLocation
 class HashTagVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var constraintToBottom: NSLayoutConstraint!
 
@@ -15,6 +16,12 @@ class HashTagVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userTagCollectionView: UICollectionView!
     @IBOutlet weak var hashtagTF: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    
+    var locationManager = CLLocationManager()
+    let locationAuthStatus = CLLocationManager.authorizationStatus()
+    
     
     var hashtags = [HashTag]()
     var userTags = [HashTag]()
@@ -24,8 +31,12 @@ class HashTagVC: UIViewController, UITextFieldDelegate {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        
+        locationManager.delegate = self
         hashtagTF.delegate = self
         
+        
+        configureAuthorizedStatus()
         userTagCollectionView.dataSource = self
         userTagCollectionView.delegate = self
         ProgressHUD.show("....")
@@ -123,7 +134,60 @@ class HashTagVC: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+//    func showAlert() {
+//        let alert = UIAlertController(title: "Error", message: "We need your location to find the nearest jobs in your area. Please go to Settings to turn on location service", preferredStyle: .alert)
+//        
+//        
+//        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+//            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+//                return
+//            }
+//            
+//            if UIApplication.shared.canOpenURL(settingsUrl) {
+//                if #available(iOS 10.0, *) {
+//                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+//                        print("Settings opened: \(success)") // Prints true
+//                    })
+//                } else {
+//                    // Fallback on earlier versions
+//                }
+//            }
+//        }
+//        alert.addAction(settingsAction)
+//        
+//        present(alert, animated: true, completion: nil)
+//    }
 
+
+}
+
+extension HashTagVC: CLLocationManagerDelegate{
+    func configureAuthorizedStatus(){
+        if locationAuthStatus == .notDetermined {
+            locationManager.requestAlwaysAuthorization()
+        }else if locationAuthStatus == .denied {
+            print("in configureAuthorizedStatus")
+        }
+        else {
+            return
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways {
+            guard let coordinate = locationManager.location?.coordinate else {
+                return
+            }
+            
+            DataService.instance.lat = coordinate.latitude
+            DataService.instance.lng = coordinate.longitude
+            print(DataService.instance.lat)
+            print(DataService.instance.lng)
+            
+        }else if status == .denied {
+//            showAlert()
+        }
+    }
 }
 
 extension HashTagVC: UICollectionViewDataSource {

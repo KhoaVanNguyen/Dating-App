@@ -9,6 +9,8 @@
 import Foundation
 import Firebase
 import FirebaseDatabase
+import SwiftyJSON
+import Alamofire
 //let DB_BASE = Database.database().reference()
 
 
@@ -17,6 +19,9 @@ let DB_BASE = FIRDatabase.database().reference()
 class DataService {
     static let instance = DataService()
     
+    
+    var lat: Double = 0.0
+    var lng: Double = 0.0
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_HASHTAGS = DB_BASE.child("hashtags")
@@ -96,13 +101,19 @@ class DataService {
     
     
     func loadAllConversation(completion: @escaping ([Conversation]) -> Void  ){
-        REF_CONVERSATIONS.queryOrdered(byChild: "sender").queryEqual(toValue: AuthService.instance.currentUid()).observeSingleEvent(of: .childAdded, with: { (snapshotData) in
+        REF_CONVERSATIONS.observeSingleEvent(of: .childAdded, with: { (snapshotData) in
             print(snapshotData)
             
             var conversations = [Conversation]()
             if let snapshot = snapshotData.value as? [String:Any] {
+            
+                
                 let conversation = Conversation(id: snapshotData.key, data: snapshot)
-                conversations.append(conversation)
+                
+                if conversation.sender == AuthService.instance.currentUid() || conversation.recipient == AuthService.instance.currentUid() {
+                    conversations.append(conversation)
+                }
+                
             }
             
             completion(conversations)
@@ -137,6 +148,42 @@ class DataService {
             }
             
         })
+        
+    }
+    
+    
+    func loadAds(type: Int, completion: @escaping ([Ad]) -> Void){
+        
+        let url = "https://datingappthetap.herokuapp.com/data"
+        
+        
+        var ads = [Ad]()
+        
+        Alamofire.request(url).responseJSON { (response) in
+            if response.result.error != nil {
+                return
+            }else {
+                
+                guard let data = response.data else {
+                    return
+                }
+                
+                
+                let dict = JSON(data: data)
+    
+                
+                for subJSON in dict["ads"][type]["list"].arrayValue {
+                    let ad = Ad(data: subJSON)
+                    ads.append(ad)
+                }
+                
+                completion(ads)
+                
+            }
+        }
+        
+        
+        
         
     }
 }
