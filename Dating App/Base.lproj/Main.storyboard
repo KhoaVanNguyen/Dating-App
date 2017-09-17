@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +38,7 @@
                                     <constraint firstAttribute="height" constant="1" id="h68-zN-Mgz"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Asset 1" translatesAutoresizingMaskIntoConstraints="NO" id="f5B-pG-qiR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 57" translatesAutoresizingMaskIntoConstraints="NO" id="f5B-pG-qiR">
                                 <rect key="frame" x="72" y="70" width="176" height="123"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="176" id="1eK-dg-PFV"/>
@@ -468,9 +467,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvu-ma-cck">
-                                                    <rect key="frame" x="115" y="29" width="86.5" height="21"/>
+                                                    <rect key="frame" x="115" y="64.5" width="180" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="190" id="IhP-G5-6bj"/>
+                                                        <constraint firstAttribute="width" constant="180" id="9W8-6Q-GjG"/>
+                                                        <constraint firstAttribute="height" constant="21" id="gMq-hc-6pY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -479,8 +479,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqs-3g-s8z" customClass="GradientView" customModule="Dating_App" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="29" width="90" height="90"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8F-0h-kRr">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8F-0h-kRr">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -488,12 +489,8 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="l8F-0h-kRr" secondAttribute="bottom" id="7kV-aL-u3e"/>
-                                                        <constraint firstItem="l8F-0h-kRr" firstAttribute="top" secondItem="Iqs-3g-s8z" secondAttribute="top" id="Flr-jE-1mC"/>
-                                                        <constraint firstItem="l8F-0h-kRr" firstAttribute="leading" secondItem="Iqs-3g-s8z" secondAttribute="leading" id="GSp-g1-D6z"/>
-                                                        <constraint firstAttribute="height" constant="90" id="PhX-xO-iBA"/>
-                                                        <constraint firstAttribute="width" constant="90" id="QSs-Zs-pU2"/>
-                                                        <constraint firstAttribute="trailing" secondItem="l8F-0h-kRr" secondAttribute="trailing" id="zaA-hr-zFT"/>
+                                                        <constraint firstAttribute="width" constant="90" id="Dzj-g6-HwF"/>
+                                                        <constraint firstAttribute="height" constant="90" id="uFc-os-Zh0"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -506,11 +503,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Iqs-3g-s8z" firstAttribute="leading" secondItem="hs6-Sg-CiG" secondAttribute="leading" constant="10" id="A1b-sm-HL2"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="qvu-ma-cck" secondAttribute="trailing" constant="5" id="EZE-iw-bh5"/>
-                                                <constraint firstItem="qvu-ma-cck" firstAttribute="leading" secondItem="Iqs-3g-s8z" secondAttribute="trailing" constant="15" id="Nl2-Ln-heW"/>
-                                                <constraint firstItem="qvu-ma-cck" firstAttribute="top" secondItem="Iqs-3g-s8z" secondAttribute="top" id="qBc-4O-OXg"/>
-                                                <constraint firstItem="qvu-ma-cck" firstAttribute="top" secondItem="hs6-Sg-CiG" secondAttribute="topMargin" constant="21" id="xZf-zu-IJQ"/>
+                                                <constraint firstItem="Iqs-3g-s8z" firstAttribute="leading" secondItem="hs6-Sg-CiG" secondAttribute="leading" constant="10" id="45l-OU-HCp"/>
+                                                <constraint firstItem="Iqs-3g-s8z" firstAttribute="centerY" secondItem="hs6-Sg-CiG" secondAttribute="centerY" id="4wV-eS-04x"/>
+                                                <constraint firstItem="qvu-ma-cck" firstAttribute="centerY" secondItem="hs6-Sg-CiG" secondAttribute="centerY" id="K7Z-ff-yBR"/>
+                                                <constraint firstItem="qvu-ma-cck" firstAttribute="leading" secondItem="Iqs-3g-s8z" secondAttribute="trailing" constant="15" id="lmO-uc-4af"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -844,6 +840,7 @@
     <resources>
         <image name="Asset 1" width="108" height="108"/>
         <image name="Glyphs  Table Cell  Checkmark" width="5" height="5"/>
+        <image name="Group 57" width="96" height="128"/>
         <image name="IC_sendtext" width="24" height="24"/>
         <image name="chat-1" width="32" height="32"/>
         <image name="network" width="40" height="37"/>
