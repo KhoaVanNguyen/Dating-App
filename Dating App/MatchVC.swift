@@ -23,10 +23,10 @@ class MatchVC: UIViewController {
         
 //        self.tabBarController?.delegate = self as! UITabBarControllerDelegate
         
-        let u1 = User(id: "Wd9Ow2xKqwVKU", matchTags: 19)
-        let u2 = User(id: "MNgnf3dfl2W", matchTags: 4)
-        let u3 = User(id: "HiHFLSwc7ASBxZq", matchTags: 60)
-        let u4 = User(id: "HiHFLSwc7ASBxZ", matchTags: 7)
+        let u1 = User(id: "Wd9Ow2xKqwVKU", matchTags: 19, gender: 1)
+        let u2 = User(id: "MNgnf3dfl2W", matchTags: 4, gender: 1)
+        let u3 = User(id: "HiHFLSwc7ASBxZq", matchTags: 60, gender: 1)
+        let u4 = User(id: "HiHFLSwc7ASBxZ", matchTags: 7, gender: 1)
         
         users.append(contentsOf: [u1,u2,u3,u4])
         

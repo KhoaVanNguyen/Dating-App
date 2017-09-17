@@ -55,3 +55,42 @@ func calculateDistanceBetween(firsLat: Double, firstLong: Double, secondLat: Dou
     return result
 }
 
+func getBestMatches(user: User,  listHashtags: [HashTag], listUsers: [User]){
+    
+    
+    for (index,value) in listUsers.enumerated() {
+        if ( listUsers[index].gender != user.gender  ) {
+            DataService.instance.loadUserTag(userId: user.id, completion: { (tagUser1) in
+                
+                
+                DataService.instance.loadUserTag(userId: listUsers[index].id, completion: { (tagUser2) in
+                    
+                
+                    
+                    for ele in tagUser2 {
+                        let result = tagUser1.filter({ $0.content.contains(ele.content)  })
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                })
+                
+                
+            })
+        }
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+

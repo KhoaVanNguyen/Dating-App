@@ -62,9 +62,19 @@ class DataService {
 //        AuthService.instance.currentUid()
     }
     
-    func loadUserTag(completion: @escaping ([HashTag]) -> Void){
-        _REF_HASHTAGS.child("BietLapTrinh").observe(.childAdded, with: { (snapshotData) in
-            print(snapshotData)
+    func loadUserTag(userId: String,  completion: @escaping ([HashTag]) -> Void){
+//        _REF_HASHTAGS.child("BietLapTrinh").observe(.childAdded, with: { (snapshotData) in
+//            print(snapshotData)
+//        })
+        
+        var listTags = [HashTag]()
+        _REF_HASHTAGS.observe(.childAdded, with: { (snapshots) in
+            if snapshots.hasChild(userId){
+                print("HERE")
+                let tag = HashTag(content: snapshots.key)
+                
+                print(snapshots.key)
+            }
         })
     }
     

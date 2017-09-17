@@ -53,8 +53,9 @@ class HashTagVC: UIViewController, UITextFieldDelegate {
                 self.hashtags = hashtagData
                 self.collectionView.reloadData()
             }
-            DataService.instance.loadUserTag(completion: { (userTags) in
+            DataService.instance.loadUserTag(userId: AuthService.instance.currentUid(), completion: { (userTags) in
                 
+                print(userTags)
             })
         }
         
@@ -121,6 +122,8 @@ class HashTagVC: UIViewController, UITextFieldDelegate {
 //    }
     
     @IBAction func finMatch_TouchUpInside(_ sender: Any) {
+        
+        self.tabBarController?.selectedIndex = 1
     }
     
     
@@ -236,14 +239,18 @@ extension HashTagVC: UICollectionViewDelegate {
         
         self.view.endEditing(true)
         
-        userTags.append(hashtags[indexPath.row])
-        
-        DispatchQueue.main.async {
-            DataService.instance.addNewHashTag(hashtag: self.hashtags[indexPath.row].content) { (complete) in
+        if collectionView != userTagCollectionView {
+            userTags.append(hashtags[indexPath.row])
+            
+            DispatchQueue.main.async {
+                DataService.instance.addNewHashTag(hashtag: self.hashtags[indexPath.row].content) { (complete) in
+                }
             }
+            
+            userTagCollectionView.reloadData()
         }
         
-        userTagCollectionView.reloadData()
+       
     }
     
 }
@@ -260,7 +267,7 @@ extension HashTagVC: UICollectionViewDelegateFlowLayout{
         
         let size: CGSize = hashtags[indexPath.row].content.size(attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0)])
         
-        return CGSize(width: size.width * 2, height: size.height * 2)
+        return CGSize(width: size.width + 30, height: size.height * 2)
         
     }
     

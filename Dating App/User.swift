@@ -12,5 +12,6 @@ struct User {
     
     var id: String
     var matchTags: Int
+    var gender: Int
     
 }
