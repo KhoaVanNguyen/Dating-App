@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ProgressHUD
 class ChatVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
@@ -18,9 +18,10 @@ class ChatVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        
+        ProgressHUD.show("...")
         DispatchQueue.main.async {
             DataService.instance.loadAllConversation { (conversation) in
+                ProgressHUD.showSuccess("sc")
                 self.conversations.append(conversation)
                 
                 self.tableView.reloadData()
